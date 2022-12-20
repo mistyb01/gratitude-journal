@@ -4,6 +4,7 @@ import { useState } from "react";
 import './App.css';
 import AddEntry from './AddEntry';
 import Login from './Login';
+import EntryList from './EntryList';
 
 function App() {
   const [displayName, setDisplayName] = useState('');
@@ -23,7 +24,9 @@ function App() {
     <main>
     <Login loginStatus={loginStatus} displayName={displayName} updateUserInfo={updateUserInfo} updateLoginStatus={updateLoginStatus}/>
     
-    {loginStatus && <AddEntry userId={userId}/>}
+    {loginStatus && <AddEntry userId={userId}/> }
+    {loginStatus && <EntryList userId={userId}/>}
+
     </main>
   );
 }
