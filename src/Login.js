@@ -1,7 +1,6 @@
 import React from "react";
-import { useState } from "react";
 import { auth } from './firebase';
-import { onAuthStateChanged, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 const provider = new GoogleAuthProvider();
 
@@ -26,21 +25,13 @@ function handleSignIn() {
     });
 }
 
-function handleSignOut() {
-    auth.signOut();
-}
-
-function Login() {
-    const [loginStatus, setLoginStatus] = useState(false);
-    const [displayName, setDisplayName] = useState('');
-
+function Login(props) {
     auth.onAuthStateChanged(user => {
         if (user) {
-            setLoginStatus(true);
-            setDisplayName(user.displayName);
+            props.updateLoginStatus(true);
+            props.updateUserInfo(user);
         } else {
-            setLoginStatus(false);
-    
+            props.updateLoginStatus(false);
         }
     });
 
@@ -48,13 +39,13 @@ function Login() {
         <>
         <section id="login-buttons">
 
-            {loginStatus ? 
+            {props.loginStatus ? 
                 <>
-                <p>Welcome, {displayName}</p>
-                <button id="signOutBtn" onClick={handleSignOut}>Sign Out</button>
+                <p>Welcome, {props.displayName}</p>
+                <button id="signOutBtn" onClick={() => auth.signOut()}>Sign Out</button>
                 </> :
                 <button id="signInBtn" onClick={handleSignIn}>Sign in with Google</button>
-        }
+            }
 
         </section>
         </>
