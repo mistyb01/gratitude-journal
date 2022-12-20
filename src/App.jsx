@@ -8,9 +8,11 @@ import Login from './Login';
 function App() {
   const [displayName, setDisplayName] = useState('');
   const [loginStatus, setLoginStatus] = useState(false);
+  const [userId, setUserId] = useState('');
 
   function updateUserInfo(user) {
     setDisplayName(user.displayName);
+    setUserId(user.uid);
   }
 
   function updateLoginStatus(bool) {
@@ -20,7 +22,8 @@ function App() {
   return (
     <main>
     <Login loginStatus={loginStatus} displayName={displayName} updateUserInfo={updateUserInfo} updateLoginStatus={updateLoginStatus}/>
-    <AddEntry/>
+    
+    {loginStatus && <AddEntry userId={userId}/>}
     </main>
   );
 }
