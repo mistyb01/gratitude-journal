@@ -1,11 +1,10 @@
 import React from 'react';
 import './App.css';
+import AddEntry from './AddEntry';
 
 function App() {
   return (
-    <p>
-      Cleanedup React App
-    </p>
+    <AddEntry/>
   );
 }
 
