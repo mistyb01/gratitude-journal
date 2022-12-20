@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import {db} from './firebase';
-import {collection, query, orderBy, onSnapshot, where} from "firebase/firestore"
-import { auth } from './firebase';
-
+import {collection, query, orderBy, onSnapshot, where} from "firebase/firestore";
 
 function EntryList(props) {
-    const [displayedEntries, setDisplayedEntries] = useState([]); 
+    const [displayedEntries, setDisplayedEntries] = useState([
+        // {title: "test", description: "description", date: "june 1, 2022"},
+        // {title: "test", description: "description", date: "june 2, 2022"}
+    ]); 
 
     useEffect(() => {
         const q = query(collection(db, 'entries'), 
@@ -19,15 +20,15 @@ function EntryList(props) {
             })))
         })
     })
+    
 
     return (
         <section id="entry-list">
-            <h2>your entries</h2>
            {displayedEntries.map((entry) => 
             <div className="entry" key={entry.id}>
+                <span className="date">{entry.created.toDate().toDateString()}</span>
                 <h3>{entry.title}</h3>
                 <p>{entry.description}</p>
-                <span className="date"></span>
             </div>
            )} 
            {displayedEntries.length === 0 && <p>no entries yet.</p>}

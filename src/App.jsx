@@ -21,13 +21,17 @@ function App() {
   }
 
   return (
-    <main>
-    <Login loginStatus={loginStatus} displayName={displayName} updateUserInfo={updateUserInfo} updateLoginStatus={updateLoginStatus}/>
-    
-    {loginStatus && <AddEntry userId={userId}/> }
-    {loginStatus && <EntryList userId={userId}/>}
+    <div className="layout-container">
+      <header>
+        <h1>memory box</h1>
+        <Login loginStatus={loginStatus} displayName={displayName} updateUserInfo={updateUserInfo} updateLoginStatus={updateLoginStatus}/>
+      </header>
 
-    </main>
+      <main className="layout-container">
+        {loginStatus && <AddEntry userId={userId}/> }
+        {loginStatus && <EntryList userId={userId}/>}
+      </main>
+    </div>
   );
 }
 
