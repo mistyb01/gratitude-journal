@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 import {db} from './firebase';
 import {collection, addDoc, Timestamp} from 'firebase/firestore';
 
-
-
 function AddEntry(props) {
   const [entryTitle, setTitle] = useState('');
   const [entryContent, setContent] = useState('');
@@ -31,20 +29,20 @@ function AddEntry(props) {
   }
 
     return (
-        <div>
-          <h3>add new entry</h3>
+        <section className="add-entry-form">
+          <h3>add an entry</h3>
             <form onSubmit={handleSubmit}>
-              <div>
+              <div className="form-fields">
                 <label htmlFor="title">title</label>
-                <input id="title" type="text" value={entryTitle} onChange={handleChange}/>
+                <input name="title" type="text" value={entryTitle} onChange={handleChange}/>
               </div>
-              <div>
+              <div className="form-fields">
                 <label htmlFor="description">description</label>
-                <input id="description" type="text" value={entryContent} onChange={handleChange}/>
+                <textarea name="description" rows="3" value={entryContent} onChange={handleChange}/>
               </div>
               <button type="submit">submit</button>
             </form>
-        </div>
+        </section>
     )
 }
 

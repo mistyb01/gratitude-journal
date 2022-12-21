@@ -26,8 +26,10 @@ function EntryList(props) {
         <section id="entry-list">
            {displayedEntries.map((entry) => 
             <div className="entry" key={entry.id}>
-                <span className="date">{entry.created.toDate().toDateString()}</span>
-                <h3>{entry.title}</h3>
+                <div className="entry-heading">
+                    <h3>{entry.title}</h3>
+                    <span className="date">{entry.created.toDate().toDateString()}</span>
+                </div>
                 <p>{entry.description}</p>
             </div>
            )} 
