@@ -38,9 +38,15 @@ main {
 .entry {
     display: flex;
     flex-direction: column;
+    gap: 0.25rem;
     border: 1px solid darkblue;
     padding: 0.5rem 1rem;
     background-color: snow;
+    transition: 0.5s ease-in;
+}
+
+.entry:hover {
+    background-color: rgb(247, 232, 234);
 }
 
 #entry-list {
@@ -53,7 +59,6 @@ main {
 .entry-heading {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 0.25rem;
 }
 
 .entry p {
@@ -63,10 +68,18 @@ main {
 .entry .date {
     font-size: 0.75rem;
     font-style: italic;
-    align-self: center;
+    color: slategray;
 }
 
-
+.entry-corner {
+    display: flex;
+    gap: 0.25rem;
+}
+.icon-button {
+    background: transparent;
+    border: none;
+    padding: 0 0.25rem;
+}
 
 .form-fields {
     display: flex;
@@ -79,3 +92,4 @@ main {
     border: 1px solid darkblue;
     background-color: snow;
 }
+
