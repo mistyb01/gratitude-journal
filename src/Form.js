@@ -14,6 +14,7 @@ function Form(props) {
                 onChange={props.handleChange}/>
               </div>
               <button type="submit">submit</button>
+              {props.handleCancel && <button onClick={props.handleCancel}>cancel</button>}
             </form>
     );
 }

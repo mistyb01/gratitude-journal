@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {db} from './firebase';
 import { doc, updateDoc, deleteDoc} from "firebase/firestore";
+import Form from './Form';
 
 /* 
 writing the update function
@@ -10,6 +11,12 @@ writing the update function
 function Entry(props) {
 
     const [isEditing, setIsEditing] = useState(false);
+    const [newTitle, setNewTitle] = useState(props.title);
+    const [newContent, setNewContent] = useState(props.description);
+  
+    function handleChange(e) {
+      e.target.name === 'title' ? setNewTitle(e.target.value) : setNewContent(e.target.value);
+    }
 
     const handleDelete = async (e) => {
         let id = e.target.id;
@@ -21,17 +28,34 @@ function Entry(props) {
         }
     }
 
+    function handleCancel() {
+        // reset changes
+        setNewTitle(props.title);
+        setNewContent(props.description);
+        
+        setIsEditing(!isEditing);
+    }
+
     const handleEdit = async (e) => {
         setIsEditing(!isEditing);
     }
   
+
     return (
         <div className="entry" key={props.id}>
         {isEditing &&
+            <>
             <div className="entry-heading">
-                <h3>editing</h3>
-                <button className="icon-button" id={props.id} onClick={handleEdit}>📝</button>
+                <h3>editing entry</h3>
             </div>
+            <Form
+                entryTitle={newTitle}
+                entryContent={newContent}
+                handleChange={handleChange}
+                handleSubmit={handleEdit}
+                handleCancel={handleCancel}
+            />
+            </>
         }
         {!isEditing &&
             <>
