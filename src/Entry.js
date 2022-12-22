@@ -18,11 +18,10 @@ function Entry(props) {
       e.target.name === 'title' ? setNewTitle(e.target.value) : setNewContent(e.target.value);
     }
 
-    const handleDelete = async (e) => {
-        let id = e.target.id;
-        const taskDocRef = doc(db, 'entries', id)
+    const handleDelete = async () => {
+        const entryDocRef = doc(db, 'entries', props.id)
         try{
-          await deleteDoc(taskDocRef)
+          await deleteDoc(entryDocRef)
         } catch (err) {
           alert(err)
         }
@@ -36,8 +35,17 @@ function Entry(props) {
         setIsEditing(!isEditing);
     }
 
-    const handleEdit = async (e) => {
-        setIsEditing(!isEditing);
+    const handleEdit = async () => {
+        const entryDocRef = doc(db, 'entries', props.id)
+        try{
+          await updateDoc(entryDocRef, {
+            title: newTitle,
+            description: newContent,
+          })
+          setIsEditing(false);
+        } catch (err) {
+          alert(err)
+        }
     }
   
 
@@ -54,6 +62,7 @@ function Entry(props) {
                 handleChange={handleChange}
                 handleSubmit={handleEdit}
                 handleCancel={handleCancel}
+                id={props.id}
             />
             </>
         }
@@ -62,8 +71,8 @@ function Entry(props) {
             <div className="entry-heading">
                 <h3>{props.title}</h3>
                 <div className="entry-corner">
-                    <button className="icon-button" id={props.id} onClick={handleEdit}>📝</button>
-                    <button className="icon-button" id={props.id} onClick={handleDelete}>✖</button>
+                    <button className="icon-button" onClick={() => setIsEditing(true)}>📝</button>
+                    <button className="icon-button" onClick={handleDelete}>✖</button>
                 </div>
             </div>
             <p>{props.description}</p>
