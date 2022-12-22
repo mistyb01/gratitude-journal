@@ -13,8 +13,10 @@ function Form(props) {
                 <textarea name="description" rows="3" value={props.entryContent} 
                 onChange={props.handleChange}/>
               </div>
+              <div>
               <button id={props.id} type="submit">submit</button>
               {props.handleCancel && <button onClick={props.handleCancel}>cancel</button>}
+              </div>
             </form>
     );
 }

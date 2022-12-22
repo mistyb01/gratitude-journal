@@ -25,13 +25,13 @@ function App() {
     <div className="layout-container">
       <header>
         <h1>thank you notes</h1>
-        <Login loginStatus={loginStatus} displayName={displayName} updateUserInfo={updateUserInfo} updateLoginStatus={updateLoginStatus}/>
+        {loginStatus && <p>logged in as {displayName}</p>}
       </header>
         {/* if in random view, a 'list view' button replaces it (which is the default view)*/}
 
-      <section id="functions">
-        <button onClick={() => setShowAdd(!showAdd)}>{showAdd ? "cancel" : "new note"}</button>
-        <button>view public notes</button>
+      <section className="menu">
+        {loginStatus && <button onClick={() => setShowAdd(!showAdd)}>{showAdd ? "cancel" : "new note"}</button>}
+        <Login loginStatus={loginStatus} displayName={displayName} updateUserInfo={updateUserInfo} updateLoginStatus={updateLoginStatus}/>
       </section>
 
       <main className="layout-container">

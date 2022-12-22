@@ -46,8 +46,8 @@ function Entry(props) {
 
     return (
       <>
-        {isEditing &&
-        <div className="entry" key={props.id}>
+        {isEditing ?
+        (<div className="entry" key={props.id}>
             <div className="entry-heading">
                 <h3>editing entry</h3>
             </div>
@@ -59,10 +59,8 @@ function Entry(props) {
                 handleCancel={handleCancel}
                 id={props.id}
             />
-            </div>
-        }
-        {!isEditing &&
-          <div className="entry" key={props.id}
+            </div>) :
+          (<div className="entry" key={props.id}
           onMouseEnter={() => setHovering(true)} onMouseLeave={()=>setHovering(false)}>
             <div className="entry-heading">
                 <h3>{props.title}</h3>
@@ -73,7 +71,7 @@ function Entry(props) {
             </div>
             <p>{props.description}</p>
             <span className="date">{props.created.toDate().toDateString()}</span>
-            </div>
+            </div>)
         }
     </>
     );

@@ -37,17 +37,12 @@ function Login(props) {
 
     return (
         <>
-        <section className="login-buttons">
-
             {props.loginStatus ? 
-                <>
-                <p>logged in as {props.displayName}</p>
-                <button id="signOutBtn" onClick={() => auth.signOut()}>Sign Out</button>
-                </> :
-                <button id="signInBtn" onClick={handleSignIn}>Sign in with Google</button>
+                <button id="signOutBtn" onClick={() => auth.signOut()}>sign out</button>
+                :
+                <button id="signInBtn" onClick={handleSignIn}>sign in with google</button>
             }
 
-        </section>
         </>
     )
 }
