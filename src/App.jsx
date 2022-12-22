@@ -31,6 +31,10 @@ function App() {
         {loginStatus && <AddEntry userId={userId}/> }
         {loginStatus && <EntryList userId={userId}/>}
       </main>
+
+      <footer>
+        <span>made with ♥ by <a href="https://mistyb01.github.io/portfolio" target="_blank">misty</a></span>
+      </footer>
     </div>
   );
 }

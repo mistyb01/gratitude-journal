@@ -75,6 +75,7 @@ main {
     display: flex;
     gap: 0.25rem;
 }
+
 .icon-button {
     background: transparent;
     border: none;
@@ -101,3 +102,7 @@ main {
     background-color: snow;
 }
 
+footer {
+    padding: 1rem 0;
+    opacity: 0.5;
+}
