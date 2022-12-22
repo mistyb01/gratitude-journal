@@ -23,22 +23,38 @@ function App() {
 
   return (
     <div className="layout-container">
+    { loginStatus && 
+    <>
       <header>
         <h1>thank you notes</h1>
-        {loginStatus && <p>logged in as {displayName}</p>}
+        <p>logged in as {displayName}</p>
       </header>
-        {/* if in random view, a 'list view' button replaces it (which is the default view)*/}
 
       <section className="menu">
-        {loginStatus && <button onClick={() => setShowAdd(!showAdd)}>{showAdd ? "cancel" : "new note"}</button>}
+        <button onClick={() => setShowAdd(!showAdd)}>{showAdd ? "cancel" : "new note"}</button>
         <Login loginStatus={loginStatus} displayName={displayName} updateUserInfo={updateUserInfo} updateLoginStatus={updateLoginStatus}/>
       </section>
 
       <main className="layout-container">
-        {loginStatus && showAdd && <AddEntry userId={userId}/> }
-        {loginStatus && <EntryList userId={userId}/>}
+        { showAdd && <AddEntry userId={userId}/> }
+        <EntryList userId={userId}/>
       </main>
+    </>
+    }
+    { !loginStatus &&
+    <>
+    <header>
+        <h1>thank you notes</h1>
+      </header>
 
+      <section className="menu">
+        <Login loginStatus={loginStatus} displayName={displayName} updateUserInfo={updateUserInfo} updateLoginStatus={updateLoginStatus}/>
+      </section>
+
+      <main className="layout-container">
+      </main>
+    </>
+    } 
       <footer>
         <span>made with ♥ by <a href="https://mistyb01.github.io/portfolio" target="_blank">misty</a></span>
       </footer>
