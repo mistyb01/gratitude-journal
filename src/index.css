@@ -79,7 +79,15 @@ main {
     background: transparent;
     border: none;
     padding: 0 0.25rem;
+    opacity: 0.5;
+    transition: 0.25s ease;
 }
+
+.icon-button:hover {
+    opacity: 1;
+}
+
+
 
 .form-fields {
     display: flex;

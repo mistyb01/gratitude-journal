@@ -23,7 +23,7 @@ function App() {
   return (
     <div className="layout-container">
       <header>
-        <h1>memory box</h1>
+        <h1>thank you notes</h1>
         <Login loginStatus={loginStatus} displayName={displayName} updateUserInfo={updateUserInfo} updateLoginStatus={updateLoginStatus}/>
       </header>
 

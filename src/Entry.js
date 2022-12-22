@@ -3,17 +3,12 @@ import {db} from './firebase';
 import { doc, updateDoc, deleteDoc} from "firebase/firestore";
 import Form from './Form';
 
-/* 
-writing the update function
-
-- three states: isEditing (true/false, toggles the edit UI), newTitle, newDescription
-*/
 function Entry(props) {
-
+    const [isHovering, setHovering] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
     const [newTitle, setNewTitle] = useState(props.title);
     const [newContent, setNewContent] = useState(props.description);
-  
+
     function handleChange(e) {
       e.target.name === 'title' ? setNewTitle(e.target.value) : setNewContent(e.target.value);
     }
@@ -50,9 +45,9 @@ function Entry(props) {
   
 
     return (
-        <div className="entry" key={props.id}>
+      <>
         {isEditing &&
-            <>
+        <div className="entry" key={props.id}>
             <div className="entry-heading">
                 <h3>editing entry</h3>
             </div>
@@ -64,22 +59,23 @@ function Entry(props) {
                 handleCancel={handleCancel}
                 id={props.id}
             />
-            </>
+            </div>
         }
         {!isEditing &&
-            <>
+          <div className="entry" key={props.id}
+          onMouseEnter={() => setHovering(true)} onMouseLeave={()=>setHovering(false)}>
             <div className="entry-heading">
                 <h3>{props.title}</h3>
-                <div className="entry-corner">
+                {isHovering && <div className="entry-corner">
                     <button className="icon-button" onClick={() => setIsEditing(true)}>📝</button>
                     <button className="icon-button" onClick={handleDelete}>✖</button>
-                </div>
+                </div>}
             </div>
             <p>{props.description}</p>
             <span className="date">{props.created.toDate().toDateString()}</span>
-            </>
+            </div>
         }
-    </div>
+    </>
     );
 }
 
