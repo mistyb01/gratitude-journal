@@ -27,6 +27,12 @@ function App() {
         <Login loginStatus={loginStatus} displayName={displayName} updateUserInfo={updateUserInfo} updateLoginStatus={updateLoginStatus}/>
       </header>
 
+      <section id="functions">
+        <button>new note</button>
+        <button>random note</button> {/* if in random view, a 'list view' button replaces it (which is the default view)*/}
+        <button>view public notes</button>
+      </section>
+
       <main className="layout-container">
         {loginStatus && <AddEntry userId={userId}/> }
         {loginStatus && <EntryList userId={userId}/>}
