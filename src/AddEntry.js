@@ -8,7 +8,7 @@ function AddEntry(props) {
   const [entryContent, setContent] = useState('');
 
   function handleChange(e) {
-    e.target.id == 'title' ? setTitle(e.target.value) : setContent(e.target.value);
+    e.target.name === 'title' ? setTitle(e.target.value) : setContent(e.target.value);
   }
 
   const handleSubmit = async (e) => {

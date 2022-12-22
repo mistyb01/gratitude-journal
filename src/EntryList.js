@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {db} from './firebase';
 import {collection, query, orderBy, onSnapshot, where} from "firebase/firestore";
+import Entry from './Entry';
 
 function EntryList(props) {
     const [displayedEntries, setDisplayedEntries] = useState([
@@ -25,13 +26,12 @@ function EntryList(props) {
     return (
         <section id="entry-list">
            {displayedEntries.map((entry) => 
-            <div className="entry" key={entry.id}>
-                <div className="entry-heading">
-                    <h3>{entry.title}</h3>
-                    <span className="date">{entry.created.toDate().toDateString()}</span>
-                </div>
-                <p>{entry.description}</p>
-            </div>
+            <Entry
+                id={entry.id}
+                title={entry.title}
+                created={entry.created}
+                description={entry.description}
+            />
            )} 
            {displayedEntries.length === 0 && <p>no entries yet.</p>}
         </section>
