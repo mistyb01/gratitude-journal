@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/gratitude/static/css/main.0fa00af5.css",
-    "main.js": "/gratitude/static/js/main.c88828b6.js",
-    "static/js/787.b3b27038.chunk.js": "/gratitude/static/js/787.b3b27038.chunk.js",
-    "index.html": "/gratitude/index.html",
-    "main.0fa00af5.css.map": "/gratitude/static/css/main.0fa00af5.css.map",
-    "main.c88828b6.js.map": "/gratitude/static/js/main.c88828b6.js.map",
-    "787.b3b27038.chunk.js.map": "/gratitude/static/js/787.b3b27038.chunk.js.map"
+    "main.css": "/gratitude-journal/static/css/main.0fa00af5.css",
+    "main.js": "/gratitude-journal/static/js/main.5748cb53.js",
+    "static/js/787.b3b27038.chunk.js": "/gratitude-journal/static/js/787.b3b27038.chunk.js",
+    "index.html": "/gratitude-journal/index.html",
+    "main.0fa00af5.css.map": "/gratitude-journal/static/css/main.0fa00af5.css.map",
+    "main.5748cb53.js.map": "/gratitude-journal/static/js/main.5748cb53.js.map",
+    "787.b3b27038.chunk.js.map": "/gratitude-journal/static/js/787.b3b27038.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0fa00af5.css",
-    "static/js/main.c88828b6.js"
+    "static/js/main.5748cb53.js"
   ]
 }
